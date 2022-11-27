@@ -14,7 +14,7 @@ import com.projetInteg.randonnee.service.RandonneeService;
 
 @RestController
 @RequestMapping("/rando")
-@CrossOrigin
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class RandonneeRestController {
 
 	@Autowired
@@ -40,7 +40,7 @@ public class RandonneeRestController {
 		return randonneeservice.saveRandonnee(randonnee);
 	}
 
-	@RequestMapping(value = "/id", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void deleteRandonnee(@PathVariable("id") Long id) {
 		randonneeservice.deleteRandonneeById(id);
 	}
