@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.projetInteg.randonnee.entities.Guide;
 import com.projetInteg.randonnee.entities.Randonnee;
+import com.projetInteg.randonnee.reops.GuideRespository;
 import com.projetInteg.randonnee.reops.RandonneeRespository;
 import com.projetInteg.randonnee.service.RandonneeService;
 
@@ -15,9 +17,15 @@ public class RandonneeServiceImpl implements RandonneeService {
 	@Autowired
 	RandonneeRespository randonneerepository;
 
+	@Autowired
+	GuideRespository guideRepository;
 	@Override
 	public Randonnee saveRandonnee(Randonnee r) {
-	return randonneerepository.save(r);
+		Guide guide= guideRepository.findById(r.getGuideId());
+		r.setGuide(guide);
+		Randonnee rando= randonneerepository.save(r);
+		guide.getRandonnees().add(rando);
+	return  rando;
 	}
 
 	@Override

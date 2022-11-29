@@ -23,10 +23,20 @@ public class Randonnee {
 	private String titreRandonnee;
 	private String description;
 	private Date dateRandonnee;
-	private Time dateDebut;
-	private Time dateFin;
+	private Date dateDebut;
+	private Date dateFin;
 	private String destination;
 	private long nbPlace;
+	private long guideId;
+	
+	public long getGuideId() {
+		return guideId;
+	}
+
+	public void setGuideId(long guideId) {
+		this.guideId = guideId;
+	}
+
 	@Lob
 	@Column(columnDefinition = "TEXT")
 	private String image;
@@ -70,19 +80,19 @@ public class Randonnee {
 		this.dateRandonnee = dateRandonnee;
 	}
 
-	public Time getDateDebut() {
+	public Date getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateDebut(Time dateDebut) {
+	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
-	public Time getDateFin() {
+	public Date getDateFin() {
 		return dateFin;
 	}
 
-	public void setDateFin(Time dateFin) {
+	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
 

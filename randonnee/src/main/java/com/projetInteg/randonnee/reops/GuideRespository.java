@@ -10,6 +10,7 @@ import com.projetInteg.randonnee.entities.Guide;
 @RepositoryRestResource(path = "guide")
 @CrossOrigin("*") //pour autoriser react
 public interface GuideRespository extends JpaRepository<Guide, Long> {
+	Guide findById(long id);
 	List<Guide> findByNomGuide(String nom);
 	List<Guide> findByNomGuideContains(String nom);
 	
